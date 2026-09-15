@@ -6,7 +6,6 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 
 
-# Create your views here.
 def home_main_page(request):
     return render(request, "webpage/index.html")
 
@@ -20,18 +19,30 @@ def elements(request):
 
 
 def contact(request):
-    if request.method == "POST":
 
+    if request.method == "POST":
         form = ContactModelForm(request.POST)
+
         if form.is_valid():
             form.save()
-            messages.success(request, "Your message has been sent.")
-            form = ContactModelForm()
+
+            messages.success(request, "Your message has been sent successfully.")
+
+            return redirect("home_page:contact")
+
         else:
-            messages.error(request, "Please enter your message.")
+            for field in form:
+                for error in field.errors:
+                    messages.error(request, f"{field.label}: {error}")
+
+            for error in form.non_field_errors():
+                messages.error(request, error)
+
     else:
         form = ContactModelForm()
+
     context = {"form": form}
+
     return render(request, "webpage/contact.html", context)
 
 

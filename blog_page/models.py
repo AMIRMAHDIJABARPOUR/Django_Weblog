@@ -81,7 +81,7 @@ class Comment(models.Model):
     subject = models.CharField(max_length=256)
     massage = models.TextField(default="")
     create_date = models.DateTimeField(auto_now_add=True)
-    approved = models.BooleanField(default=False)
+    approved = models.BooleanField(default=True)
 
     def __str__(self):
         return self.subject

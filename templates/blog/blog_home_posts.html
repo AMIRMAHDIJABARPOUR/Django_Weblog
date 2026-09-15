@@ -17,11 +17,20 @@
                 <p class="date col-lg-12 col-md-12 col-6">
                     <a href="#">{{ post.updated_date|naturalday }}</a> <span class="lnr lnr-calendar-full"></span>
                 </p>
-                <p class="view col-lg-12 col-md-12 col-6">
-                    <a href="#">{{ post.counted_views|intcomma }}</a> <span class="lnr lnr-eye"></span>
-                </p>
+
                 <p class="comments col-lg-12 col-md-12 col-6">
-                    <a href="#">06 Comments</a> <span class="lnr lnr-bubble"></span>
+                    <a href="{% url 'blog_page:single_post' pid=post.id %}">
+                    
+                        {% if post.comments_count == 0 %}
+                            No Comment
+                        {% elif post.comments_count == 1 %}
+                            1 Comment
+                        {% else %}
+                            {{ post.comments_count }} Comments
+                        {% endif %}
+                    
+                    </a>
+                    <span class="lnr lnr-bubble"></span>
                 </p>
             </div>
         </div>
