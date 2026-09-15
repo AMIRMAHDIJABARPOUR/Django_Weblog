@@ -2,7 +2,6 @@ from django.db import models
 from django.urls import reverse
 
 
-# Create your models here.
 class Contact(models.Model):
     name = models.CharField(max_length=128)
     subject = models.CharField(max_length=256)

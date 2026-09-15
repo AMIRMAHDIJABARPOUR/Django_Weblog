@@ -7,8 +7,6 @@ from django.urls import reverse
 from django.utils.text import slugify
 from taggit.models import Tag
 
-# Create your models here.
-
 
 class Category(models.Model):
     name = models.SlugField(

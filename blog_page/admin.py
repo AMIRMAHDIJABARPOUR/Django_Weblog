@@ -2,7 +2,6 @@ from django.contrib import admin
 from blog_page.models import Category, Post, Comment
 
 
-# Register your models here.
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
     list_display = ("title", "author", "created_date", "updated_date", "status")
@@ -31,7 +30,6 @@ class CommentAdmin(admin.ModelAdmin):
     list_filter = ("create_date", "approved")
     search_fields = ("name", "email", "subject", "massage")
 
-    # exclude = ('slug',)
     def view_on_site(self, obj=None):
         return obj.get_absolute_url()
 

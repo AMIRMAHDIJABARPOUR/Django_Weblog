@@ -55,7 +55,6 @@ def newsletter(request):
             next_url = request.POST.get("next", "/")
             return redirect(next_url)
         else:
-            # فرم POST بود ولی نامعتبر، دوباره همون صفحه
             messages.error(request, "Please enter a valid email.")
             next_url = request.POST.get("next", "/")
             return redirect(next_url)

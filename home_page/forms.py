@@ -10,7 +10,6 @@ class ContactModelForm(forms.ModelForm):
         model = Contact
         fields = "__all__"
         exclude = ("created_date",)
-        # fields = ['name','email','subject','massage','captcha']
 
 
 class NewsletterForm(forms.ModelForm):

@@ -3,7 +3,6 @@ from django.contrib import admin
 from home_page.models import Contact, Newsletter
 
 
-# Register your models here.
 @admin.register(Contact)
 class ContactAdmin(admin.ModelAdmin):
     list_display = ["name", "email", "subject", "created_date"]
